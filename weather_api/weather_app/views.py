@@ -23,9 +23,9 @@ def web_api(request, city='london', period='current', bar_chart=None):
     except KeyError:
         return HttpResponseNotFound("<h1>Page not found. Selection must be 'current' or 'forecast'</h1>")
     else:
-        chart = get_bar_chart(data=json_data)
-        context = {'chart': chart}
-        if bar_chart:
+        if bar_chart and period == 'forecast':
+            chart = get_bar_chart(data=json_data)
+            context = {'chart': chart}
             template = loader.get_template('weather_app/profile.html')
             return HttpResponse(template.render(context, request))
         else:

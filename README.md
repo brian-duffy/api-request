@@ -3,13 +3,17 @@
 JSON API to output weather statistics and bar charts.
 
 ## Usage
-run
 
+##### API is accessible using the following parameters:
+http://46.101.18.222/weather_app/{city}/{period}
+** period can either be 'current' or 'forecast' **
+* http://46.101.18.222/weather_app/london/current *
+* http://46.101.18.222/weather_app/reading/forecast *
 
-## Credits
-
-TODO: Write credits
+##### Bar chart is accessible using the following parameters:
+http://46.101.18.222/weather_app/{city}/{period}/barchart
+Bar charts are only possible with forecast requests.
 
 ## License
 
-TODO: Write license
+Weather data is pulled from Open Weather Map

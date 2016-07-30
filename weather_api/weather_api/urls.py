@@ -14,9 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-from django.contrib import admin
-from weather_app import views
+from django.views.generic import RedirectView
+
 
 urlpatterns = [
+    url(r'^$', RedirectView.as_view(url='https://github.com/brian-duffy/yoyo-test/blob/master/README.md')),
     url(r'weather_app/', include('weather_app.urls')),
 ]

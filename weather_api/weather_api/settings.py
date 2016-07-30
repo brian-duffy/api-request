@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djangobower',
     'weather_app'
 ]
 
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'weather_api.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates', 'weather_app')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

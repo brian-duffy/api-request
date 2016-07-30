@@ -39,11 +39,7 @@ class WeatherApi(object):
         :param period: Period to search for, either current or five_day
         :return: JSON feed with raw data
         """
-        if period == 'five_day':
-            base_url = forecast_base_url
-        else:
-            base_url = current_weather_base_url
-        json_url = base_url + end_url.format(self.lat, self.lon, api_key)
+        json_url = globals()[period] + end_url.format(self.lat, self.lon, api_key)
         result = urllib2.urlopen(json_url).read()
         return json.loads(result)
 
@@ -58,16 +54,19 @@ class WeatherApi(object):
         all_humidities = [x['main']['humidity'] for i, x in(enumerate(json_data['list']))]
 
         def get_all(list_of_calculations=None):
+            """
+            Function to calculate min, max, average and median.
+            :param List_of_calculations: List of numbers.
+            :return: Dictionary with new values.
+            """
             calcs = {}
-            min_temp = min(list_of_calculations)
-            max_temp = max(list_of_calculations)
+            min_ = min(list_of_calculations)
+            max_ = max(list_of_calculations)
             average = reduce(lambda x, y: x + y, list_of_calculations) / len(list_of_calculations)
             median = numpy.median(numpy.array(list_of_calculations))
-            for y in ('min_temp', 'max_temp', 'average', 'median'):
+            for y in ('min_', 'max_', 'average', 'median'):
                 calcs[y] = locals()[y]
             return calcs
         json_data['temperature_calcs'] = get_all(list_of_calculations=all_temps)
         json_data['humidity_calcs'] = get_all(list_of_calculations=all_humidities)
         return json_data
-
-

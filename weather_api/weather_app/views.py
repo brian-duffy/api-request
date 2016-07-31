@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
 from django.template import loader
 from api_config.open_weather_map import WeatherApi
-from api_config.bar_chart import get_bar_chart
+from api_config.bar_chart import get_chart
 import urllib2
 import json
 # Create your views here.
@@ -24,9 +24,9 @@ def web_api(request, city='london', period='current', bar_chart=None):
         return HttpResponseNotFound("<h1>Page not found. Selection must be 'current' or 'forecast'</h1>")
     else:
         if bar_chart and period == 'forecast':
-            chart = get_bar_chart(data=json_data)
+            chart = get_chart(data=json_data, chart=bar_chart)
             context = {'chart': chart}
-            template = loader.get_template('weather_app/profile.html')
+            template = loader.get_template('weather_app/chart.html')
             return HttpResponse(template.render(context, request))
         else:
             return HttpResponse(json.dumps(json_data), content_type="application/json")

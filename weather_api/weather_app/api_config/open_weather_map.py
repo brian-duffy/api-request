@@ -17,10 +17,9 @@ class WeatherApi(object):
         """
         self.city = city
         self.period = period
-        self.lat, self.lon = self.get_lat_lon(city=city)
+        self.lat, self.lon = self.get_lat_lon()
 
-    @staticmethod
-    def get_lat_lon(city=None):
+    def get_lat_lon(self):
         """
         Function to return a latitude and longitude coordinates of a given city.
         :param city: City to search for.
@@ -28,7 +27,7 @@ class WeatherApi(object):
         """
         geolocator = Nominatim()
         try:
-            loc = geolocator.geocode(city)
+            loc = geolocator.geocode(self.city)
             return loc.latitude, loc.longitude
         except (TypeError, AttributeError):
             return 999999, 999999
@@ -50,6 +49,8 @@ class WeatherApi(object):
         :param json_data:
         :return: returns json_data appended with new calculated values
         """
+        if json_data['cod'] == '404':
+            return json_data
         all_temps = [x['main']['temp'] for i, x in(enumerate(json_data['list']))]
         all_humidities = [x['main']['humidity'] for i, x in(enumerate(json_data['list']))]
 

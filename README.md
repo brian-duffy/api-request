@@ -22,6 +22,10 @@ http://app-server.space/weather_app/{city}/{period}
 
 **Charts are only possible with forecast requests.*
 
+*http://app-server.space/weather_app/reading/forecast/barchart*
+
+*http://app-server.space/weather_app/reading/forecast/linechart*
+
 ## License
 
 Weather data is pulled from Open Weather Map.

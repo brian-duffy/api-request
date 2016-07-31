@@ -8,7 +8,7 @@ JSON API to output weather statistics and bar charts.
 
 http://app-server.space/weather_app/{city}/{period}
 
-**Period can either be 'current' or 'forecast':**
+**Period can either be 'current' or 'forecast'. E.g:**
 
 *http://app-server.space/weather_app/london/current*
 
@@ -20,11 +20,11 @@ http://app-server.space/weather_app/{city}/{period}
 
 *http://app-server.space/weather_app/{city}/{period}/linechart*
 
-**Charts are only possible with forecast requests.*
+**Charts are only possible with forecast requests. E.g:**
 
-*http://app-server.space/weather_app/reading/forecast/barchart*
+*<http://app-server.space/weather_app/reading/forecast/barchart>*
 
-*http://app-server.space/weather_app/reading/forecast/linechart*
+*<http://app-server.space/weather_app/reading/forecast/linechart>*
 
 ## License
 

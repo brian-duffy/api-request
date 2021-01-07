@@ -21,7 +21,7 @@ geocoder==1.15.1
 geopy==1.11.0
 Jinja2==2.8
 ldif3==3.1.1
-lxml==3.6.0
+lxml==4.6.2
 Markdown==2.3.1
 MarkupSafe==0.23
 matplotlib==1.5.1

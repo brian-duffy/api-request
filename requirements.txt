@@ -19,7 +19,7 @@ docutils==0.11
 funcsigs==1.0.2
 geocoder==1.15.1
 geopy==1.11.0
-Jinja2==2.8
+Jinja2==2.11.3
 ldif3==3.1.1
 lxml==3.6.0
 Markdown==2.3.1
